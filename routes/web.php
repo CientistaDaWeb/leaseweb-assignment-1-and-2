@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
 Route::get('/', function () {
+
     if(!auth()->check()) {
         return redirect()->route('login');
     }
@@ -22,8 +23,8 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard/Index');
-})->middleware(['auth', 'verified'])->name('dashboard');
+    return redirect()->to('/');
+})->name('dashboard');
 
 // Brands
 Route::get('brands', [BrandsController::class, 'index'])
