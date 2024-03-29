@@ -11,7 +11,8 @@ class BrandController extends Controller
 {
     public function index()
     {
-        return response()->json(Brand::all());
+        $page = request()->input('page', 20);
+        return Brand::query()->paginate($page);
     }
 
     public function show(Brand $brand)

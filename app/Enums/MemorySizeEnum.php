@@ -14,4 +14,5 @@ enum MemorySizeEnum: int
     case GIGABYTE128 = 128;
     case GIGABYTE256 = 256;
     case GIGABYTE512 = 512;
+
 }
