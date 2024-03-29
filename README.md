@@ -4,6 +4,7 @@
 - clone the repository
 - copy the .env.example to .env
 - run `composer install`
+- run `vendor/bin/sail build`
 - run `vendor/bin/sail up -d`
 - connect to the app container
 - run `php artisan migrate:fresh --seed`
