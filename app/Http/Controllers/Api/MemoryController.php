@@ -11,7 +11,8 @@ class MemoryController extends Controller
 {
     public function index()
     {
-        return response()->json(Memory::all());
+        $page = request()->input('page', 20);
+        return Memory::query()->paginate($page);
     }
 
     public function show(Memory $memory)

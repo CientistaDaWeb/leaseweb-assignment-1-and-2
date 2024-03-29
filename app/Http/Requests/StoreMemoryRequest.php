@@ -25,8 +25,8 @@ class StoreMemoryRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'type' => [Rule::enum(MemoryTypeEnum::class)],
-            'size' => [Rule::enum(MemorySizeEnum::class)],
+            'type' => ['required', Rule::enum(MemoryTypeEnum::class)],
+            'size' => ['required', Rule::enum(MemorySizeEnum::class)],
         ];
     }
 }

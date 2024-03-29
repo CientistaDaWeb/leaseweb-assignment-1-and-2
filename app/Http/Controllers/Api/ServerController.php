@@ -11,10 +11,10 @@ class ServerController extends Controller
 {
     public function index()
     {
-        return response()->json(
-            Server::with('brand', 'memories')
-                ->get()
-        );
+        $page = request()->input('page', 20);
+        return Server::query()
+            ->with('brand', 'memories')
+            ->paginate($page);
     }
 
     public function show(Server $server)
@@ -26,12 +26,16 @@ class ServerController extends Controller
     {
         $server = Server::create($request->all());
 
+        $server->memories()->sync($request->input('memories'));
+
         return response()->json($server, 201);
     }
 
     public function update(StoreServerRequest $request, Server $server)
     {
         $server->update($request->all());
+
+        $server->memories()->sync($request->input('memories'));
 
         return response()->json($server);
     }

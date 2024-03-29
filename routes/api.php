@@ -16,11 +16,11 @@ Route::post('/tokens/create', function (Request $request) {
     return ['token' => $token->plainTextToken];
 });
 
-// Route::group(['middleware' => 'auth:sanctum'], function () {
+Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::resources([
         'servers' => ServerController::class,
         'brands' => BrandController::class,
         'memories' => MemoryController::class
     ]);
-// });
+});
 
